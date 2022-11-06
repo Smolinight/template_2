@@ -8,9 +8,19 @@ pipeline
             steps
             {
                 echo "========executing Python application========"
-                sh "ls -la"
-                sh "tree"
-                sh "pwd"
+                sh "./sq.py"
+            }
+        }
+        stage("Create nginx docker image with generated image by py app")
+        {
+            steps
+            {
+                echo "========building Docker image========"
+                dir('content')
+                {
+                    sh "docker build -t pyweb:1.0 -f ../docker/Dockerfile ."
+                    sh "docker images"
+                }
             }
         }
     }
