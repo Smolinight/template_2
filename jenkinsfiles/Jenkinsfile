@@ -1,0 +1,17 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage("Run py app")
+        {
+            steps
+            {
+                echo "========executing Python application========"
+                sh "ls -la"
+                sh "tree"
+                sh "pwd"
+            }
+        }
+    }
+}
