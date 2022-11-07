@@ -11,7 +11,7 @@ pipeline
                 dir('content')
                 {
                     sh "docker build -t ngixn_on_vds:v1.0 -f ../docker/Dockerfile ."
-                    sh "docker images"
+                    sh "docker run -d -p 80:80 ngixn_on_vds:v1.0"
                 }
             }
         }
