@@ -3,13 +3,17 @@ pipeline
     agent any
     stages
     {
-	stage("Check connect")
+        stage("Build nginx container")
         {
             steps
             {
-                echo "========Check========"
-                sh "ls -la"
+                echo "======== Start building nginx container ========"
+                dir('content')
+                {
+                    sh "docker build -t ngixn_on_vds:v1.0 -f ../docker/Dockerfile ."
+                    sh "docker images"
+                }
             }
-        }	
+        }
     }
 }
